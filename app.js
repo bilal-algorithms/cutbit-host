@@ -25,16 +25,14 @@ document.addEventListener('scroll' , () => {
 })
 
 const switchTheme = () => {
-    const rootElem = document.documentElement
-    let datatheme = rootElem.getAttribute('data-theme'),
-        newTheme
+    const rootElem = document.documentElement;
+    rootElem.classList.toggle('dark');
 
-    newTheme = (datatheme == 'light') ? 'dark' : 'light';
+    if (rootElem.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+    }
+    else {
+        localStorage.setItem('theme', 'light');
+    }
 
-    console.log('Old theme:', datatheme);
-    console.log('New theme:', newTheme);
-
-    rootElem.setAttribute('data-theme', newTheme);
-    // Update the theme switcher's before pseudo-element
-    document.getElementById('theme-switcher').style.setProperty('--switch-circle-pos', newTheme === 'light' ? '0.3rem' : '3rem');
 }
