@@ -26,16 +26,18 @@ document.addEventListener('scroll' , () => {
 })
 */
 const switchTheme = () => {
-    const rootElem = document.Element
+    const rootElem = document.documentElement; // Change this line
     let dataTheme = rootElem.getAttribute('data-theme'),
-        newTheme
-    newTheme = (dataTheme == 'light') ? 'dark' : 'light'
+        newTheme;
 
-    // set the new html attribute
-    rootElem.setAttribute('data-theme', newTheme)
+    newTheme = (dataTheme === 'light') ? 'dark' : 'light';
 
-    // set the new local storage
-    localStorage.setItem('theme', newTheme)
-}
+    // Set the new HTML attribute
+    rootElem.setAttribute('data-theme', newTheme);
+
+    // Set the new local storage
+    localStorage.setItem('theme', newTheme);
+};
 
 document.getElementById('theme-switcher').addEventListener('click', switchTheme);
+
