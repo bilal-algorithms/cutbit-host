@@ -1,3 +1,4 @@
+/*
 function lightmode() {
     document.body.style.backgroundColor = "white";
     document.body.style.color = "black";
@@ -23,16 +24,18 @@ document.addEventListener('scroll' , () => {
         header.classList.remove('scrolled');
     }
 })
-
+*/
 const switchTheme = () => {
-    const rootElem = document.documentElement;
-    rootElem.classList.toggle('dark');
+    const rootElem = document.Element
+    let dataTheme = rootElem.getAttribute('data-theme'),
+        newTheme
+    newTheme = (dataTheme == 'light') ? 'dark' : 'light'
 
-    if (rootElem.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-    }
-    else {
-        localStorage.setItem('theme', 'light');
-    }
+    // set the new html attribute
+    rootElem.setAttribute('data-theme', newTheme)
 
+    // set the new local storage
+    localStorage.setItem('theme', newTheme)
 }
+
+document.getElementById('theme-switcher').addEventListener('click', switchTheme);
